@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MenuFragment">
+
+    <ScrollView
+        android:id="@+id/registrar_ou_ver_registro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop ="50dp"
+        android:background="#8F598F">
+
+    <LinearLayout
+        android:id="@+id/quadrado_branco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/btnIrParaBaterPonto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:text="Bater Ponto"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnIrParaRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:text="Registrar Ponto"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnIrParaRegistros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:text="Seus Registros"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
