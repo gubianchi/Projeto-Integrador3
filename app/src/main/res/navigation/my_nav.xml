@@ -20,4 +20,19 @@
         android:name="com.example.projetointegrador3.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/recuperarSenhaFragment"
+        android:name="com.example.projetointegrador3.RecuperarSenhaFragment"
+        android:label="fragment_recuperar_senha"
+        tools:layout="@layout/fragment_recuperar_senha" />
+    <fragment
+        android:id="@+id/AA0501Fragment"
+        android:name="com.example.projetointegrador3.AtividadeFragment"
+        android:label="fragment_a_a0501"
+        tools:layout="@layout/fragment_atividade" />
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.projetointegrador3.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
 </navigation>
