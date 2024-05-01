@@ -10,7 +10,7 @@ import com.example.projetointegrador3.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
-    private val email = "1234"
+    private val email = "gu_vbianchi@hotmail.com"
     private var senha = "1234"
 
     private var _binding: FragmentLoginBinding? = null

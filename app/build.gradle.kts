@@ -43,7 +43,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-bom:32.3.1")
     implementation("com.google.firebase:firebase-auth-ktx:22.1.2")
-    implementation("com.google.firebase:firebase-storage-ktx:20.2.1")
+    implementation("com.google.firebase:firebase-database-ktx")
 
     implementation ("androidx.navigation:navigation-fragment-ktx:2.4.2")
     implementation ("androidx.navigation:navigation-ui-ktx:2.4.2")

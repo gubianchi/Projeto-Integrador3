@@ -26,13 +26,13 @@
         android:label="fragment_recuperar_senha"
         tools:layout="@layout/fragment_recuperar_senha" />
     <fragment
-        android:id="@+id/AA0501Fragment"
-        android:name="com.example.projetointegrador3.AtividadeFragment"
-        android:label="fragment_a_a0501"
-        tools:layout="@layout/fragment_atividade" />
-    <fragment
         android:id="@+id/blankFragment"
         android:name="com.example.projetointegrador3.BlankFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_blank" />
+    <fragment
+        android:id="@+id/atividadeFragment"
+        android:name="com.example.projetointegrador3.AtividadeFragment"
+        android:label="fragment_atividade"
+        tools:layout="@layout/fragment_atividade" />
 </navigation>

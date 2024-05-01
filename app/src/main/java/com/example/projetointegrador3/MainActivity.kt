@@ -12,5 +12,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
       supportFragmentManager.beginTransaction().replace(R.id.nav_container, LoginFragment()).commit()
+
+
+        /*código para passar dados enstre fragments
+
+         val bundle = Bundle()
+            bundle.putString("data", binding.#id da onde vai retirar o texto#.text.toString())
+
+            val fragment = AtividadeFragment()
+            fragment.arguments = bundle
+
+            depois só fazer a troca de fragments normalmente
+            ----------------------------------------------
+            o fragment que vai receber os dados deve:
+
+            val args = this.arguments
+            val inputData = args?.get("data")
+            binding.#id que vai receber o texto#.text = Editable.Factory.getInstance().newEditable(inputData.toString())
+         */
     }
 }
