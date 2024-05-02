@@ -37,7 +37,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun logar(){
 
-        var emailUsuario = binding.textEmail.text.toString()
+        val emailUsuario = binding.textEmail.text.toString()
         val senhaUsuario = binding.textSenha.text.toString()
 
         if((this.email == emailUsuario)&&(this.senha == senhaUsuario)){
