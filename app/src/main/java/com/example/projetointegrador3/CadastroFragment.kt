@@ -3,23 +3,28 @@ package com.example.projetointegrador3
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.example.projetointegrador3.databinding.FragmentCadastroBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
 
     private var _binding: FragmentCadastroBinding? = null
     private val binding get()= _binding!!
+    private lateinit var database: DatabaseReference
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentCadastroBinding.inflate(inflater, container, false)
         return binding.root
@@ -30,22 +35,39 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         binding.btnCadastrar.setOnClickListener { cadastrar() }
     }
 
-    private fun cadastrar(){
-        val emailUsuario = binding.textCadastroEmail.toString().trim()//trim torna o campo como preenchimento obirgatório
-        val nomeUsuario = binding.textCadastroNome.toString().trim()
-        val cpfCliente = binding.textCadastroCPF.toString().trim()
-        val senhaCliente = binding.textCadastroSenha.toString().trim()
 
-        val alertDialogBuilder = AlertDialog.Builder(requireContext())//criador do alerta
+    private fun cadastrar(){
+
+        //                                        ***mais pra frente é preciso adicionar validações
+        //---------COLETA DADOS DO USUÁRIO-----------para ver se o cpf é válido (tenho essa função pronta)
+
+        val raUsuario = binding.textCadastroEmail.text.toString().trim()// "trim" torna o campo como preenchimento obirgatório
+        val nomeUsuario = binding.textCadastroNome.text.toString().trim()
+        //val cpfUsuario = binding.textCadastroCPF.text.toString().trim()
+        //val senhaUsuario = binding.textCadastroSenha.text.toString().trim()
+
+        //                                             ***mais pra frente é preciso colocar validações
+        //---------INSERÇÃO NO BANCO DE DADOS ----------- para checar se ja existe um cadastro com dados iguais
+
+        inserirDadoBD(nomeUsuario, raUsuario)
+
+        val alertDialogBuilder = AlertDialog.Builder(requireContext())
         alertDialogBuilder.setTitle("Conta Criada!")
+
 
         alertDialogBuilder.setPositiveButton("Voltar para tela de login", DialogInterface.OnClickListener { dialog, id ->
             val fragment = LoginFragment()
             val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.nav_container, fragment)?.commit()
-             }) //dispara um alerta notificando que a conta foi criada e manda ele de volta para a tela de login
-
+        })
         alertDialogBuilder.create()
         alertDialogBuilder.show()
+    }
+
+    private fun inserirDadoBD(nomeUsuario: String, raUsuario: String){ //senhaUsuario, cpfUsuario
+        database =  FirebaseDatabase.getInstance().getReference("usuarios")
+        val user = User(nomeUsuario, raUsuario) //cpfUsuario, senhaUsuario)
+        database.child(raUsuario).setValue(user)
+
     }
 }
