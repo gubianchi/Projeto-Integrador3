@@ -41,15 +41,15 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         //                                        ***mais pra frente é preciso adicionar validações
         //---------COLETA DADOS DO USUÁRIO-----------para ver se o cpf é válido (tenho essa função pronta)
 
-        val raUsuario = binding.textCadastroEmail.text.toString().trim()// "trim" torna o campo como preenchimento obirgatório
+        val emailUsuario = binding.textCadastroEmail.text.toString().trim()// "trim" torna o campo como preenchimento obirgatório
         val nomeUsuario = binding.textCadastroNome.text.toString().trim()
-        //val cpfUsuario = binding.textCadastroCPF.text.toString().trim()
-        //val senhaUsuario = binding.textCadastroSenha.text.toString().trim()
+        val cpfUsuario = binding.textCadastroCPF.text.toString().trim()
+        val senhaUsuario = binding.textCadastroSenha.text.toString().trim()
 
         //                                             ***mais pra frente é preciso colocar validações
         //---------INSERÇÃO NO BANCO DE DADOS ----------- para checar se ja existe um cadastro com dados iguais
 
-        inserirDadoBD(nomeUsuario, raUsuario)
+        inserirDadoBD(nomeUsuario, emailUsuario, cpfUsuario, senhaUsuario)
 
         val alertDialogBuilder = AlertDialog.Builder(requireContext())
         alertDialogBuilder.setTitle("Conta Criada!")
@@ -64,10 +64,11 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         alertDialogBuilder.show()
     }
 
-    private fun inserirDadoBD(nomeUsuario: String, raUsuario: String){ //senhaUsuario, cpfUsuario
+    private fun inserirDadoBD(nomeUsuario: String, emailUsuario: String, cpfUsuario: String, senhaUsuario: String){
+
         database =  FirebaseDatabase.getInstance().getReference("usuarios")
-        val user = User(nomeUsuario, raUsuario) //cpfUsuario, senhaUsuario)
-        database.child(raUsuario).setValue(user)
+        val usuario = Usuario(nomeUsuario, emailUsuario, cpfUsuario, senhaUsuario)
+        database.child(cpfUsuario).setValue(usuario)
 
     }
 }
