@@ -49,7 +49,7 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         //                                             ***mais pra frente é preciso colocar validações
         //---------INSERÇÃO NO BANCO DE DADOS ----------- para checar se ja existe um cadastro com dados iguais
 
-        inserirDadoBD(nomeUsuario, emailUsuario, cpfUsuario, senhaUsuario)
+         inserirDadoBD(nomeUsuario, emailUsuario, cpfUsuario, senhaUsuario)
 
         val alertDialogBuilder = AlertDialog.Builder(requireContext())
         alertDialogBuilder.setTitle("Conta Criada!")
@@ -64,11 +64,13 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         alertDialogBuilder.show()
     }
 
+
     private fun inserirDadoBD(nomeUsuario: String, emailUsuario: String, cpfUsuario: String, senhaUsuario: String){
 
         database =  FirebaseDatabase.getInstance().getReference("usuarios")
         val usuario = Usuario(nomeUsuario, emailUsuario, cpfUsuario, senhaUsuario)
         database.child(cpfUsuario).setValue(usuario)
-
     }
+
+
 }
