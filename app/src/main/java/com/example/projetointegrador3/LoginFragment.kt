@@ -1,5 +1,6 @@
 package com.example.projetointegrador3
 
+import RecuperarSenhaFragment
 import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,15 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.projetointegrador3.databinding.FragmentLoginBinding
+import android.graphics.Color
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
-    private val email = "gu_vbianchi@hotmail.com"
-    private var senha = "1234"
-
+    private lateinit var auth: FirebaseAuth
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -23,7 +23,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -31,41 +30,59 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnEnviar.setOnClickListener{logar()}
+        auth = FirebaseAuth.getInstance()
 
-        binding.textCadastro.setOnClickListener{toCadastro()}
-
-        binding.textEsqueciSenha.setOnClickListener{toRecuperarSenha()}
+        binding.btnEnviar.setOnClickListener { logar() }
+        binding.textCadastro.setOnClickListener { toCadastro() }
+        binding.textEsqueciSenha.setOnClickListener { toRecuperarSenha() }
     }
 
-    private fun logar(){
 
-        val emailUsuario = binding.textEmail.text.toString()
-        val senhaUsuario = binding.textSenha.text.toString()
+    private fun logar() {
+        val email = binding.textEmail.text.toString()
+        val senha = binding.textSenha.text.toString()
 
-        if((this.email == emailUsuario)&&(this.senha == senhaUsuario)){
-            val fragment = MenuFragment() //navigation para próxima página
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.nav_container, fragment)?.commit()
-        }else{
-            val alertDialogBuilder = AlertDialog.Builder(requireContext())
-
-            alertDialogBuilder.setTitle("Credencias incorretas!")
-            alertDialogBuilder.setMessage("Confira seu email ou senha.")
-            alertDialogBuilder.create()
-            alertDialogBuilder.show()
+        if (email.isEmpty() || senha.isEmpty()) {
+            exibirSnackbar("Preencha todos os campos!", Color.RED)
+        } else {
+            auth.signInWithEmailAndPassword(email, senha)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // Login bem-sucedido, navegue para a próxima página
+                        val fragment = MenuFragment()
+                        val transaction = parentFragmentManager.beginTransaction()
+                        transaction.replace(R.id.nav_container, fragment)
+                        transaction.commit()
+                    } else {
+                        // Se o login não for bem-sucedido, exibir mensagem de erro
+                        exibirSnackbar("Erro ao fazer login, email incorreto!", Color.RED)
+                    }
+                }
         }
     }
 
-    private fun toCadastro(){
-        val fragment = CadastroFragment()
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.replace(R.id.nav_container, fragment)?.commit()
-    }
 
     private fun toRecuperarSenha(){
         val fragment = RecuperarSenhaFragment()
         val transaction = fragmentManager?.beginTransaction()
         transaction?.replace(R.id.nav_container, fragment)?.commit()
+    }
+
+    private fun toCadastro() {
+        val fragment = CadastroFragment()
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_container, fragment)
+        transaction.commit()
+    }
+
+    private fun exibirSnackbar(mensagem: String, cor: Int) {
+        val snackbar = Snackbar.make(requireView(), mensagem, Snackbar.LENGTH_SHORT)
+        snackbar.setBackgroundTint(cor)
+        snackbar.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

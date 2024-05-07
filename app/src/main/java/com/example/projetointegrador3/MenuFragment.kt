@@ -1,14 +1,18 @@
 package com.example.projetointegrador3
 
+import CalendarWithButtonFragment
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 
 class MenuFragment : Fragment() {
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,13 +23,15 @@ class MenuFragment : Fragment() {
 
         val btnBaterPonto: Button = view.findViewById(R.id.btnIrParaBaterPonto)
         val btnVerRegistros: Button = view.findViewById(R.id.btnIrParaRegistros)
-        val btnRegistrarPonto: Button = view.findViewById(R.id.btnIrParaRegistrar)
+        val btnCalendario: Button = view.findViewById(R.id.btnIrParaRegistrar)
+        val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
 
-
-        btnBaterPonto.setOnClickListener {
-            val fragment = LoginFragment()
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.nav_container, fragment)?.commit()
+        btnCalendario.setOnClickListener {
+            fragmentManager?.beginTransaction()?.apply {
+                replace(R.id.nav_container, CalendarWithButtonFragment())
+                addToBackStack(null)
+                commit()
+            }
         }
         /*
         btnVerRegistros.setOnClickListener {
