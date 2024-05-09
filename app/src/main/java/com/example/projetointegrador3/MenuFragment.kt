@@ -22,16 +22,26 @@ class MenuFragment : Fragment() {
 
 
         val btnBaterPonto: Button = view.findViewById(R.id.btnIrParaBaterPonto)
-        val btnVerRegistros: Button = view.findViewById(R.id.btnIrParaRegistros)
         val btnCalendario: Button = view.findViewById(R.id.btnIrParaRegistrar)
+        val btnVerRegistros: Button = view.findViewById(R.id.btnIrParaRegistros)
         val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
 
         btnCalendario.setOnClickListener {
+            /*
             fragmentManager?.beginTransaction()?.apply {
                 replace(R.id.nav_container, CalendarWithButtonFragment())
                 addToBackStack(null)
                 commit()
+             */
+            val fragment = CalendarWithButtonFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.nav_container, fragment)?.commit()
             }
+
+
+        imageButton.setOnClickListener {
+            // Chamando onBackPressed() para voltar para a página anterior
+            requireActivity().onBackPressed()
         }
         /*
         btnVerRegistros.setOnClickListener {

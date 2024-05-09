@@ -25,4 +25,9 @@
         android:name="com.example.projetointegrador3.RecuperarSenhaFragment"
         android:label="fragment_recuperar_senha"
         tools:layout="@layout/fragment_recuperar_senha" />
+    <fragment
+        android:id="@+id/calendarioCadastrarAula"
+        android:name="com.example.projetointegrador3.CalendarioCadastrarAula"
+        android:label="fragment_calendario_cadastrar_aula"
+        tools:layout="@layout/fragment_calendario_cadastrar_aula" />
 </navigation>

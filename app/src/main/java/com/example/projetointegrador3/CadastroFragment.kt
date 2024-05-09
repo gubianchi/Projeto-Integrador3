@@ -21,7 +21,6 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
 
     private var _binding: FragmentCadastroBinding? = null
     private val binding get()= _binding!!
-    private lateinit var database: DatabaseReference
     private val auth = FirebaseAuth.getInstance()
 
 
