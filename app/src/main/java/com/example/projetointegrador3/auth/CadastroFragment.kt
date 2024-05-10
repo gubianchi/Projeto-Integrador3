@@ -76,13 +76,4 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
             }
         }
     }
-
-    /*
-    private fun inserirDadoBD(nomeUsuario: String, emailUsuario: String, cpfUsuario: String, senhaUsuario: String){
-
-        database =  FirebaseDatabase.getInstance().getReference("usuarios")
-        val usuario = Usuario(nomeUsuario, emailUsuario, cpfUsuario, senhaUsuario)
-        database.child(cpfUsuario).setValue(usuario)
-    }
-    */
 }

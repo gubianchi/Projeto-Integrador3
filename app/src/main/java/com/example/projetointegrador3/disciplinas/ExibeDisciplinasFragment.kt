@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projetointegrador3.AddActivityDialog
 import com.example.projetointegrador3.databinding.FragmentExibeDisciplinasBinding
 import com.example.projetointegrador3.registros.Aula
 import com.google.firebase.auth.FirebaseAuth

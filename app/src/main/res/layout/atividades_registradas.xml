@@ -74,6 +74,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 tools:text="Sala 101"/>
+            <TextView
+                android:id="@+id/tvData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                tools:text="10/05/2024"/>
+
         </LinearLayout>
 
     </LinearLayout>

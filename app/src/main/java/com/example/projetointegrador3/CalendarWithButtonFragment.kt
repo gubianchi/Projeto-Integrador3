@@ -64,7 +64,6 @@ class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickList
 
         val uid = auth.currentUser?.uid ?: "Null"
         val id = database.push().key ?: "Null"
-        val alertDialogBuilder = AlertDialog.Builder(requireContext())
         aula.data = this.data
 
         database
@@ -78,10 +77,11 @@ class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickList
                     snackbar.setBackgroundTint(Color.BLUE)
                     snackbar.show()
 
-                    alertDialogBuilder.create()
-                    alertDialogBuilder.show()
                 }else{
                     Toast.makeText(requireContext(),task.exception?.message, Toast.LENGTH_SHORT).show()
+                    val snackbar = Snackbar.make(requireView(), "Falha ao salvar aula", Snackbar.LENGTH_SHORT)
+                    snackbar.setBackgroundTint(Color.RED)
+                    snackbar.show()
                 }
             }
     }
