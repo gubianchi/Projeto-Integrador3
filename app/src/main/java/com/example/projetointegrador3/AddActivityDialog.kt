@@ -1,21 +1,14 @@
 package com.example.projetointegrador3
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
-import android.content.DialogInterface
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.TimePicker
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.example.projetointegrador3.R
-import com.google.android.material.snackbar.Snackbar
+import com.example.projetointegrador3.registros.Aula
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference

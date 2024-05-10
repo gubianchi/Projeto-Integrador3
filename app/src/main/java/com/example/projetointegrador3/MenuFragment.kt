@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import com.example.projetointegrador3.disciplinas.ExibeDisciplinasFragment
 
 class MenuFragment : Fragment() {
 
@@ -38,25 +39,19 @@ class MenuFragment : Fragment() {
             transaction?.replace(R.id.nav_container, fragment)?.commit()
             }
 
+        btnVerRegistros.setOnClickListener {
+            val fragment = ExibeDisciplinasFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.nav_container, fragment)?.commit()
+        }
+
 
         imageButton.setOnClickListener {
             // Chamando onBackPressed() para voltar para a página anterior
             requireActivity().onBackPressed()
         }
-        /*
-        btnVerRegistros.setOnClickListener {
-            //val fragment = ... tela ver registros
-            val transaction = fragmentManager?.beginTransaction()
-            //transaction?.replace(R.id.nav_container, tela ver registros)
-        }
 
-        btnRegistrarPonto.setOnClickListener {
-            //val fragment = ... tela registrar ponto
-            val transaction = fragmentManager?.beginTransaction()
-            //transaction?.replace(R.id.nav_container, tela registrar ponto)
-        }
 
-         */
         return view
     }
 

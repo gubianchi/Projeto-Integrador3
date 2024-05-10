@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/fragmentCadastro"
-        android:name="com.example.projetointegrador3.CadastroFragment"
+        android:name="com.example.projetointegrador3.auth.CadastroFragment"
         android:label="fragment_cadastro"
         tools:layout="@layout/fragment_cadastro" />
     <fragment
         android:id="@+id/fragmentLogin"
-        android:name="com.example.projetointegrador3.LoginFragment"
+        android:name="com.example.projetointegrador3.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
     <fragment
@@ -26,8 +26,13 @@
         android:label="fragment_recuperar_senha"
         tools:layout="@layout/fragment_recuperar_senha" />
     <fragment
-        android:id="@+id/calendarioCadastrarAula"
-        android:name="com.example.projetointegrador3.CalendarioCadastrarAula"
-        android:label="fragment_calendario_cadastrar_aula"
-        tools:layout="@layout/fragment_calendario_cadastrar_aula" />
+        android:id="@+id/ordenaAulasFragment"
+        android:name="com.example.projetointegrador3.disciplinas.OrdenaAulasFragment"
+        android:label="fragment_ordena_aulas"
+        tools:layout="@layout/fragment_ordena_aulas" />
+    <fragment
+        android:id="@+id/exibeDisciplinasFragment"
+        android:name="com.example.projetointegrador3.disciplinas.ExibeDisciplinasFragment"
+        android:label="fragment_exibe_disciplinas"
+        tools:layout="@layout/fragment_exibe_disciplinas" />
 </navigation>

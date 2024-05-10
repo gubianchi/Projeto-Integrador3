@@ -1,24 +1,16 @@
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.CalendarView
-import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TimePicker
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.example.projetointegrador3.AddActivityDialog
-import com.example.projetointegrador3.Aula
-import com.example.projetointegrador3.LoginFragment
-import com.example.projetointegrador3.MenuFragment
+import com.example.projetointegrador3.registros.Aula
 import com.example.projetointegrador3.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +18,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.time.LocalTime
 
 class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickListener {
     private lateinit var database: DatabaseReference
