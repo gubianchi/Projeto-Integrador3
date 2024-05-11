@@ -5,5 +5,6 @@ data class Aula(
     var horaInicio: String = "",
     var data: String = "",
     var local: String = "",
-    var nomeDisciplina: String = ""
+    var nomeDisciplina: String = "",
+    var pontoBatido: Boolean = false
 )

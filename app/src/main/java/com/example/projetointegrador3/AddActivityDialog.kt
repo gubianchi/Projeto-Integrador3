@@ -62,7 +62,7 @@ class AddActivityDialog(context: Context, private val listener: OnSaveClickListe
                 val timeStringFim = String.format("%02d:%02d", hourFim, minuteFim)
                 val data = ""
 
-                val aula = Aula(timeStringFim, timeStringInicio, data, local, nomeDisciplina)
+                val aula = Aula(timeStringFim, timeStringInicio, data, local, nomeDisciplina, false)
                 listener.onSaveClick(aula)
                 dismiss()
             }

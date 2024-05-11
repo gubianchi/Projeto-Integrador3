@@ -3,10 +3,12 @@ package com.example.projetointegrador3.disciplinas
 import CalendarWithButtonFragment
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetointegrador3.AddActivityDialog
 import com.example.projetointegrador3.R
 import com.example.projetointegrador3.databinding.AtividadesRegistradasBinding
 import com.example.projetointegrador3.registros.Aula
@@ -22,28 +24,32 @@ class AtividadesAdapter(private val aulas: List<Aula>) :
             binding.tvHorarioTermino.text = disciplina.horaFim
             binding.tvLocal.text = disciplina.local
             binding.tvData.text = disciplina.data
+            binding.tvPontoBatido.text = "Bater ponto"
+            binding.tvPontoBatido.setTextColor(Color.RED)
 
 
             binding.tvNomeDisciplina.setOnClickListener {
                 val alertDialogBuilder = AlertDialog.Builder(binding.root.context)
-                alertDialogBuilder.setMessage("Editar registro")
+                alertDialogBuilder.setMessage("Bater ponto")
+
+
+                alertDialogBuilder.setPositiveButton("Bater") { dialog, _ ->
+                    binding.tvPontoBatido.text = "Ponto batido!"
+                    binding.tvPontoBatido.setTextColor(Color.GREEN)
+                    disciplina.pontoBatido = true
+
+                }
+                alertDialogBuilder.setNegativeButton("Cancelar") { dialog, _ ->
+
+                    dialog.dismiss()
+                }
+
                 alertDialogBuilder.create()
                 alertDialogBuilder.show()
-                /*
-                alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
 
-                    val fragment = CalendarWithButtonFragment()
-                    val transaction = fragmentManager.beginTransaction()
-                    transaction.replace(R.id.nav_container, fragment).commit()
-                    dialog.dismiss()
-                }
-                alertDialogBuilder.setNegativeButton("Voltar") { dialog, _ ->
-
-                    dialog.dismiss()
-                }
-
-                 */
             }
+
+
         }
     }
 
@@ -56,6 +62,7 @@ class AtividadesAdapter(private val aulas: List<Aula>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(aulas[position])
     }
+
 
     override fun getItemCount() = aulas.size
 }
