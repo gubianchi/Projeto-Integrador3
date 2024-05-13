@@ -18,6 +18,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.util.Calendar
 
 class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickListener {
     private lateinit var database: DatabaseReference
@@ -32,8 +33,16 @@ class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickList
         val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
 
 
+        val calendario = Calendar.getInstance()
+        val diaAtual = calendario.get(Calendar.DAY_OF_MONTH)
+        val mesAtual = calendario.get(calendario.get(Calendar.MONTH) + 1)
+        val anoAtual = calendario.get(Calendar.YEAR)
+
+        var selectedDate = "$diaAtual/$mesAtual/$anoAtual"
+        this.data = selectedDate
+
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val selectedDate = "$dayOfMonth/${month + 1}/$year"
+            selectedDate = "$dayOfMonth/${month + 1}/$year"
             this.data = selectedDate
             Toast.makeText(requireContext(), "Selecionado: $selectedDate", Toast.LENGTH_SHORT).show()
         }
@@ -49,7 +58,6 @@ class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickList
 
         return view
     }
-
 
 
     private fun showAddActivityDialog() {

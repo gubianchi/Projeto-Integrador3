@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projetointegrador3.AddActivityDialog
+import com.example.projetointegrador3.MenuFragment
+import com.example.projetointegrador3.R
 import com.example.projetointegrador3.databinding.FragmentExibeDisciplinasBinding
 import com.example.projetointegrador3.registros.Aula
 import com.google.firebase.auth.FirebaseAuth
@@ -36,6 +39,13 @@ class ExibeDisciplinasFragment : Fragment() {
         setupFirebase()
         setupRecyclerView()
         fetchDisciplinas()
+        val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
+        imageButton.setOnClickListener {
+            val fragment = MenuFragment()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_container, fragment)
+            transaction.commit()
+        }
     }
 
     private fun setupFirebase() {

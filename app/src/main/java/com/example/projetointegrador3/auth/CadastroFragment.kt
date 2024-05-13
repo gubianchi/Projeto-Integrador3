@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import com.example.projetointegrador3.MenuFragment
 import com.example.projetointegrador3.R
 import com.example.projetointegrador3.databinding.FragmentCadastroBinding
 import com.google.android.material.snackbar.Snackbar
@@ -31,6 +33,14 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
+        imageButton.setOnClickListener {
+            val fragment = MenuFragment()
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.nav_container, fragment)
+            transaction.commit()
+        }
         binding.btnCadastrar.setOnClickListener { cadastrar() }
     }
 
