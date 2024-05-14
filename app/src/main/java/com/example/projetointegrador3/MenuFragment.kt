@@ -12,10 +12,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import com.example.projetointegrador3.disciplinas.ExibeDisciplinasFragment
 
-// import com.example.projetointegrador3.disciplinas.ExibeDisciplinasFragment
-//Importa classes e recursos necessários para o funcionamento do fragmento, incluindo outros fragmentos,
-//classes para manipulação de bundles, inflação de layouts, elementos de interface do usuário e classes
-//de fragmentos que não estão sendo utilizadas no momento.
+
 
 class MenuFragment : Fragment() {  //Declara a classe MenuFragment, que é um fragmento.
 
@@ -30,7 +27,7 @@ class MenuFragment : Fragment() {  //Declara a classe MenuFragment, que é um fr
         val btnBaterPonto: Button = view.findViewById(R.id.btnIrParaBaterPonto)
         val btnCalendario: Button = view.findViewById(R.id.btnIrParaRegistrar)
         val btnMapa: Button = view.findViewById(R.id.btnIrParaMapa)
-        val imageButton = view.findViewById<ImageButton>(R.id.imageButton)
+
         //Recupera referências aos elementos de interface do usuário do layout.
 
         btnCalendario.setOnClickListener {
@@ -56,30 +53,6 @@ class MenuFragment : Fragment() {  //Declara a classe MenuFragment, que é um fr
                 commit()
             }
         }  //Define um ouvinte para o botão do mapa para substituir o conteúdo do contêiner de navegação pelo MapaFragment.
-
-        /*  btnCalendario.setOnClickListener {
-
-              fragmentManager?.beginTransaction()?.apply {
-                  replace(R.id.nav_container, CalendarWithButtonFragment())
-                  addToBackStack(null)
-                  commit()
-
-              val fragment = CalendarWithButtonFragment()
-              val transaction = fragmentManager?.beginTransaction()
-              transaction?.replace(R.id.nav_container, fragment)?.commit()
-              }
-
-          btnVerRegistros.setOnClickListener {
-              val fragment = ExibeDisciplinasFragment()
-              val transaction = fragmentManager?.beginTransaction()
-              transaction?.replace(R.id.nav_container, fragment)?.commit()
-          }
-
-
-          imageButton.setOnClickListener {
-              // Chamando onBackPressed() para voltar para a página anterior
-              requireActivity().onBackPressed()
-          } */
 
 
         return view

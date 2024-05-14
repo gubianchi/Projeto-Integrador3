@@ -1,4 +1,4 @@
-package com.example.projetointegrador3.registros
+package com.example.projetointegrador3.disciplinas
 
 data class Aula(
     var horaFim: String = "",

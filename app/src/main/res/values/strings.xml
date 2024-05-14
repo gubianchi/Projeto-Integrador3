@@ -12,5 +12,6 @@
 <string name="desc_hora_inicio">Ícone de relógio indicando a hora de início</string>
 <string name="desc_hora_termino">Ícone de relógio indicando a hora de término</string>
 <string name="desc_local">Ícone de localização indicando o local da aula</string>
+    <string name="my_map_api_key">AIzaSyB0YOuY5GhXSpuNq0aexJwRbUF7Ddg7-VM</string>
 
 </resources>

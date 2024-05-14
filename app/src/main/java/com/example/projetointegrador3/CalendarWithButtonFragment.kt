@@ -1,4 +1,3 @@
-import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +9,8 @@ import android.widget.CalendarView
 import android.widget.ImageButton
 import android.widget.Toast
 import com.example.projetointegrador3.AddActivityDialog
-import com.example.projetointegrador3.registros.Aula
 import com.example.projetointegrador3.R
+import com.example.projetointegrador3.disciplinas.Aula
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

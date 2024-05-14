@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.projetointegrador3.AddActivityDialog
 import com.example.projetointegrador3.MenuFragment
 import com.example.projetointegrador3.R
 import com.example.projetointegrador3.databinding.FragmentExibeDisciplinasBinding
-import com.example.projetointegrador3.registros.Aula
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

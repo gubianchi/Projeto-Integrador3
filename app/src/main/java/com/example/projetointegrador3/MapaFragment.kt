@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.tasks.Task
+import kotlin.properties.Delegates
 
 
 //codigo funcionando antes de adicionar a localização no botão:
@@ -35,6 +36,8 @@ val mapaFragment = MapaFragment()
 
 class MapaFragment : Fragment(), OnMapReadyCallback {
     private lateinit var currentLocation: Location
+    //private var localizacaoValida by Delegates.notNull<Boolean>() -> tentei usar alguma variavel global para evitar chamar as funções mas n deu certo
+                                                                      // dps da uma olhada na getLastLocation()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,7 +61,7 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
         checkLocationPermission()
     }
 
-    private fun checkLocationPermission() {
+    fun checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(
                 requireContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -100,9 +103,20 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
             if (location != null) {
                 currentLocation = location
                 onMapReady(mGoogleMap)
+
+                /*
+                if ((currentLocation.latitude< -22.8 && currentLocation.latitude > -22.9) &&
+                    (currentLocation.longitude < -47.0 && currentLocation.longitude > -47.1)){
+                    this.localizacaoValida = true
+                }
+                 */
             }
         }
     }
+
+    //fun isLocalizacaoValida(): Boolean {
+        //return this.localizacaoValida
+    //}
 
     override fun onMapReady(googleMap: GoogleMap) {
         mGoogleMap = googleMap
@@ -124,16 +138,19 @@ class MapaFragment : Fragment(), OnMapReadyCallback {
             }
         }
     }
+
+    fun comparaLocalizacao(): Boolean {
+
+        //getLastLocation()
+
+        //loc puc -22.83080, -47.04399
+
+        return ((-22.83080< -22.8 && -22.83080 > -22.9) &&
+                (-47.04399 < -47.0 && -47.04399 > -47.1))
+    }
+
+    //fun isLocalizacaoValida(): Boolean {
+    //return this.localizacaoValida
+    //}
 }
 
-/*
-// localização para campinas
-override fun onMapReady(googleMap: GoogleMap) {
-    myMap = googleMap
-    val campinas = LatLng(-22.907104, -47.063240)
-    myMap!!.addMarker(MarkerOptions().position(campinas).title("Campinas"))
-    myMap!!.moveCamera(CameraUpdateFactory.newLatLng(campinas))
-    val options = MarkerOptions().position(campinas).title("Campinas")
-    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-    myMap!!.addMarker(options)
-}*/

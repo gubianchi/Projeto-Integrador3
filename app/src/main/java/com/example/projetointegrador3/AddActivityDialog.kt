@@ -8,7 +8,7 @@ import android.view.Window
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TimePicker
-import com.example.projetointegrador3.registros.Aula
+import com.example.projetointegrador3.disciplinas.Aula
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference

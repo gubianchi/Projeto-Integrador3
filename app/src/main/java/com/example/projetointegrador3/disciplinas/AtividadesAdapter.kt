@@ -6,10 +6,9 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetointegrador3.MapaFragment
 import com.example.projetointegrador3.databinding.AtividadesRegistradasBinding
-import com.example.projetointegrador3.registros.Aula
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -54,15 +53,18 @@ class AtividadesAdapter(private val aulas: List<Aula>) :
             // Verifica se a hora atual está entre a hora de início e de término
             val isWithinTimeRange = currentTimeInMinutes in startTimeInMinutes until endTimeInMinutes
 
+            //val mapaFragment: MapaFragment
+            val mapaFragment = MapaFragment()
+
             if(disciplina.pontoBatido){
                 binding.textView3.text = "Ponto batido"
                 binding.textView3.setTextColor(Color.GREEN)
                 binding.button.visibility = View.INVISIBLE
             }
-            else if (isWithinTimeRange) {
+
+            else if (isWithinTimeRange && mapaFragment.comparaLocalizacao()) {
                 binding.button.visibility = View.VISIBLE
                 binding.button.text = "Bater ponto"
-                binding.button.setTextColor(Color.RED)
 
                 binding.button.setOnClickListener {
 
