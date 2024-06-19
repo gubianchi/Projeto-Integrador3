@@ -69,10 +69,9 @@ class CalendarWithButtonFragment : Fragment(), AddActivityDialog.OnSaveClickList
         database = Firebase.database.reference
         auth = Firebase.auth
 
-        // uid = auth.currentUser?.uid ?: "Null"
+        //val uid = auth.currentUser?.uid ?: "Null"
         val emailUsuario = auth.currentUser?.email ?: "Null"
         val email = emailUsuario.replace('.', '_')
-
         aula.data = this.data
 
         database
